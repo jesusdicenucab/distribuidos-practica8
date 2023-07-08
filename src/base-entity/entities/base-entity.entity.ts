@@ -6,10 +6,10 @@ export abstract class BaseEntity {
   id: number;
   @Column({type: 'text'})
   status: BaseEntityStatus;
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created_date: Date;
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  deleted_date: Date;
+  @Column({ name: 'created_date', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdDate: Date;
+  @Column({ name: 'deleted_date',type: 'timestamp', nullable: true})
+  deletedDate: Date;
   @Check(`status in ('enabled', 'disabled')`)
   statusCheck: boolean;
 

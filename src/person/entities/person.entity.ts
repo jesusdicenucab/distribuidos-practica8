@@ -1,6 +1,5 @@
 import { BaseEntity } from "src/base-entity/entities/base-entity.entity";
 import { Column, Entity, OneToMany } from "typeorm";
-import { CreatePersonDto } from "../dto/create-person.dto";
 import { Enrollment } from "src/enrollment/entities/enrollment.entity";
 
 @Entity({name: 'persons'})

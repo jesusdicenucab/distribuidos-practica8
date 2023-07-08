@@ -4,4 +4,6 @@ Se debe crear un archivo .env en la raíz del proyecto que contenga los valores 
 
 SWAGGER:
 
-El url para ingresar al swagger de la aplicación es: localhost:3000/api
+El url para ingresar al swagger de la aplicación es: localhost:SERVER_PORT/swagger
+
+El valor de SERVER_PORT se establece en el archivo .env de la aplicación.

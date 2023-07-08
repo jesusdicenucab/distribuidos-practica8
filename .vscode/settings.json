@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "practica de distribuidos 8",
+      "database": "distribuidos_practica8",
+      "username": "jesusdicen"
+    }
+  ]
+}
