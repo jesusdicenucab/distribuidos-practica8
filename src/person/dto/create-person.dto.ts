@@ -1,4 +1,4 @@
-import { IsString, IsIn, IsOptional, IsDateString } from "class-validator";
+import { IsString, IsIn } from "class-validator";
 import { BaseEntityStatus } from "src/types/types";
 
 export class CreatePersonDto {
