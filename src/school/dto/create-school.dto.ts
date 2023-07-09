@@ -1,16 +1,16 @@
-import { IsString, IsDate, IsIn, IsDateString } from "class-validator";
-import { BaseEntityStatus } from "src/types/types";
+import { Type } from "class-transformer";
+import { IsString, IsInt, IsOptional, IsArray, ValidateNested } from "class-validator";
 
 export class CreateSchoolDto {
-  @IsIn(['enabled', 'disabled'] as const)
-  @IsString()
-  public readonly status: BaseEntityStatus;
-  @IsDateString()
-  public readonly createdDate: Date;
-  @IsDateString()
-  public readonly deletedDate?: Date;
   @IsString()
   public readonly name: string;
   @IsString()
   public readonly description: string;
+  @IsInt()
+  public readonly facultyId: number;
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({each: true})
+  @Type(() => Number)
+  public readonly sectionsId?: number[];
 }
