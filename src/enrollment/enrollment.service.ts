@@ -63,12 +63,12 @@ export class EnrollmentService {
 
   async update(id: number, updateEnrollmentDto: UpdateEnrollmentDto): Promise<IApplicationResponse<Enrollment>> {
     try {
-      let Enrollment = await this._enrollmentRepository.findOne({where: {id: id}});
-      if (Enrollment === null)
+      let enrollment = await this._enrollmentRepository.findOne({where: {id: id}});
+      if (enrollment === null)
         return new ApplicationResponse('Enrollment no registrado', true, []).GetResponse();
-      Enrollment = {...Enrollment, ...updateEnrollmentDto}
-      await this._enrollmentRepository.save(Enrollment);
-      return new ApplicationResponse('Enrollment editado correctamente', true, [Enrollment]).GetResponse();
+      enrollment = {...enrollment, ...updateEnrollmentDto}
+      await this._enrollmentRepository.save(enrollment);
+      return new ApplicationResponse('Enrollment editado correctamente', true, [enrollment]).GetResponse();
     } catch(error) {
       return new ApplicationResponse('Operación fallida', false, []).GetResponse();
     }
@@ -76,12 +76,12 @@ export class EnrollmentService {
 
   async remove(id: number): Promise<IApplicationResponse<Enrollment>> {
     try {
-      let Enrollment = await this._enrollmentRepository.findOne({where: {id: id}});
-      if (Enrollment === null)
+      let enrollment = await this._enrollmentRepository.findOne({where: {id: id}});
+      if (enrollment === null)
         return new ApplicationResponse('Enrollment no registrado', false, []).GetResponse();
-      Enrollment = {...Enrollment, status: 'disabled', deletedDate: new Date()}
-      await this._enrollmentRepository.save(Enrollment);
-      return new ApplicationResponse('Enrollment eliminado correctamente', true, [Enrollment]).GetResponse();
+      enrollment = {...enrollment, status: 'disabled', deletedDate: new Date()}
+      await this._enrollmentRepository.save(enrollment);
+      return new ApplicationResponse('Enrollment eliminado correctamente', true, [enrollment]).GetResponse();
     } catch(error) {
       return new ApplicationResponse('Operación fallida', false, []).GetResponse();
     }
