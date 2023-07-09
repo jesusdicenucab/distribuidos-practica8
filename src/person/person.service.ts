@@ -27,7 +27,7 @@ export class PersonService {
 
   async findAll(): Promise<IApplicationResponse<Person>> {
     try {
-      const results = await this._personRepository.find({where: {deletedDate: IsNull()}});
+      const results = await this._personRepository.find({where: {status: 'enabled', deletedDate: IsNull()}});
       if (results.length === 0)
         return new ApplicationResponse('No ha personas registradas', false, []).GetResponse();
       return new ApplicationResponse('Persona registradas', true, results).GetResponse();
@@ -38,7 +38,7 @@ export class PersonService {
 
   async findOne(dni: string): Promise<IApplicationResponse<Person>> {
     try {
-      const result = await this._personRepository.findOne({where: {deletedDate: IsNull(), dni: dni}});
+      const result = await this._personRepository.findOne({where: {status: 'enabled', deletedDate: IsNull(), dni: dni}});
       if (result === null)
         return new ApplicationResponse('Persona no registrada', false, []).GetResponse();
       return new ApplicationResponse('Persona registrada', true, [result]).GetResponse();
@@ -65,7 +65,7 @@ export class PersonService {
       let person = await this._personRepository.findOne({where: {dni: dni}});
       if (person === null)
         return new ApplicationResponse('Persona no registrada', false, []).GetResponse();
-      person = {...person, deletedDate: new Date()}
+      person = {...person, status: 'disabled', deletedDate: new Date()}
       await this._personRepository.save(person);
       return new ApplicationResponse('Persona eliminada correctamente', true, [person]).GetResponse();
     } catch(error) {
