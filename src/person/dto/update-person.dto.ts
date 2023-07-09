@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/swagger';
 import { CreatePersonDto } from './create-person.dto';
-import { IsDateString, IsIn, IsOptional, IsString } from 'class-validator';
+import { IsIn, IsOptional, IsString } from 'class-validator';
 import { BaseEntityStatus } from 'src/types/types';
 
 export class UpdatePersonDto extends PartialType(CreatePersonDto) {
@@ -17,10 +17,10 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
   @IsString()
   @IsOptional()
   public readonly lastName?: string;
-  @IsDateString()
+  // @IsDateString()
   // @IsOptional()
   // public readonly createdDate?: Date;
-  @IsDateString()
-  @IsOptional()
-  public readonly deletedDate?: Date;
+  // @IsDateString()
+  // @IsOptional()
+  // public readonly deletedDate?: Date;
 }
