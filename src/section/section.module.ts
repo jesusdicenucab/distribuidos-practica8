@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [TypeOrmModule.forFeature([Section])],
   controllers: [SectionController],
-  providers: [SectionService]
+  providers: [SectionService],
+  exports: [SectionService]
 })
 export class SectionModule {}

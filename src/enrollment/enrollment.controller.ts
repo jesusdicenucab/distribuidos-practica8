@@ -5,30 +5,37 @@ import { UpdateEnrollmentDto } from './dto/update-enrollment.dto';
 
 @Controller('enrollment')
 export class EnrollmentController {
-  constructor(private readonly enrollmentService: EnrollmentService) {}
+
+  constructor(private readonly _enrollmentService: EnrollmentService) {}
 
   @Post()
-  create(@Body() createEnrollmentDto: CreateEnrollmentDto) {
-    return this.enrollmentService.create(createEnrollmentDto);
+  async create(@Body() createEnrollmentDto: CreateEnrollmentDto) {
+    return await this._enrollmentService.create(createEnrollmentDto);
   }
 
   @Get()
-  findAll() {
-    return this.enrollmentService.findAll();
+  async findAll() {
+    return await this._enrollmentService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.enrollmentService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this._enrollmentService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEnrollmentDto: UpdateEnrollmentDto) {
-    return this.enrollmentService.update(+id, updateEnrollmentDto);
+  async update(@Param('id') id: string, @Body() updateEnrollmentDto: UpdateEnrollmentDto) {
+    return await this._enrollmentService.update(+id, updateEnrollmentDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.enrollmentService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this._enrollmentService.remove(+id);
   }
+
+  @Get(':sectionId/:type')
+  async personsByTypeAndSection(@Param('sectionId') sectionId: string, @Param('type') type) {
+    return await this._enrollmentService.getPersonsByTypeAndSection(+sectionId, type);
+  }
+
 }
