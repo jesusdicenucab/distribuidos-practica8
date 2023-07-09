@@ -18,8 +18,8 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
   @IsOptional()
   public readonly lastName?: string;
   @IsDateString()
-  @IsOptional()
-  public readonly createdDate?: Date;
+  // @IsOptional()
+  // public readonly createdDate?: Date;
   @IsDateString()
   @IsOptional()
   public readonly deletedDate?: Date;
