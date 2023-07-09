@@ -1,6 +1,5 @@
-import { Entity, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 import { Entity as EntityClass} from "src/entity/entities/entity.entity";
-import { CreateSchoolDto } from "../dto/create-school.dto";
 import { Faculty } from "src/faculty/entities/faculty.entity";
 import { Section } from "src/section/entities/section.entity";
 
@@ -9,7 +8,7 @@ export class School extends EntityClass{
 
   @ManyToOne(() => Faculty, (faculty) => faculty.schools)
   faculty: Faculty;
-  @OneToMany(() => Section, (section) => section.school)
+  @OneToMany(() => Section, (section) => section.school, {nullable: true})
   sections: Section[];
 
   // public constructor(newFacultyDto: CreateSchoolDto) {
