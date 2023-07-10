@@ -9,6 +9,7 @@ import { ApplicationResponse } from 'src/utils/application-response/application-
 import { PersonService } from 'src/person/person.service';
 import { SectionService } from 'src/section/section.service';
 import { Person } from 'src/person/entities/person.entity';
+import { EnrollmentType } from 'src/types/types';
 
 @Injectable()
 export class EnrollmentService {
@@ -87,7 +88,7 @@ export class EnrollmentService {
     }
   }
 
-  async getPersonsByTypeAndSection(sectionId: number, type: string): Promise<IApplicationResponse<Person>> {
+  async getPersonsByTypeAndSection(sectionId: number, type: EnrollmentType): Promise<IApplicationResponse<Person>> {
     try {
       const results = await this._enrollmentRepository.find({
         select: ['person'],
