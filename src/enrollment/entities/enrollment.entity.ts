@@ -1,5 +1,4 @@
 import { Column, Entity, ManyToOne } from "typeorm";
-import { CreateEnrollmentDto } from '../dto/create-enrollment.dto';
 import { BaseEntity } from "src/base-entity/entities/base-entity.entity";
 import { Section } from "src/section/entities/section.entity";
 import { Person } from "src/person/entities/person.entity";

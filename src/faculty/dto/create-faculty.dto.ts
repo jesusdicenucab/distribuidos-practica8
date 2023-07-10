@@ -1,16 +1,18 @@
-import { IsString, IsDate, IsIn } from "class-validator";
-import { BaseEntityStatus } from "src/types/types";
+import { ApiProperty } from "@nestjs/swagger";
+import { Type } from "class-transformer";
+import { IsArray, IsOptional, IsString, ValidateNested } from "class-validator";
 
 export class CreateFacultyDto {
-  @IsIn(['enabled', 'disabled'] as const)
-  @IsString()
-  public readonly status: BaseEntityStatus;
-  @IsDate()
-  public readonly created_date: Date;
-  @IsDate()
-  public readonly deleted_date?: Date;
+  @ApiProperty({description: 'Name: Faculty name', type: 'string', example: 'Ingenieria'})
   @IsString()
   public readonly name: string;
+  @ApiProperty({description: 'Description: Faculty description', type: 'string', example: 'Facultad de Ingenieria'})
   @IsString()
   public readonly description: string;
+  @ApiProperty({description: 'Array of Schools ID', type: 'string[]', example: '[1, 2, 3, 4, 5]'})
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({each: true})
+  @Type(() => Number)
+  public readonly schoolsId?: number[];
 }

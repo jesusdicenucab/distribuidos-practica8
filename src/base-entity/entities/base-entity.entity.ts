@@ -4,7 +4,7 @@ import { Check, Column, PrimaryGeneratedColumn } from "typeorm";
 export abstract class BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({type: 'text'})
+  @Column({type: 'text', default: 'enabled'})
   status: BaseEntityStatus;
   @Column({ name: 'created_date', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdDate: Date;

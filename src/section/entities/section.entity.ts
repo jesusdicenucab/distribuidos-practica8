@@ -1,6 +1,5 @@
 import { Check, Column, Entity, ManyToOne, OneToMany } from "typeorm";
 import { Entity as EntityClass } from "src/entity/entities/entity.entity";
-import { CreateSectionDto } from '../dto/create-section.dto';
 import { SectionType } from "src/types/types";
 import { School } from "src/school/entities/school.entity";
 import { Enrollment } from "src/enrollment/entities/enrollment.entity";
